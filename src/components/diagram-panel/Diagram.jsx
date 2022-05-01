@@ -112,6 +112,7 @@ class Diagram extends React.Component {
         if (['node-selected', 'node-moved'].indexOf(action.type) !== -1) {
             return this.props.updateModel(model, action.model.serialize());
         }
+
         // e.g.: items-deleted
         this.props.updateModel(model);
     }
@@ -121,7 +122,10 @@ class Diagram extends React.Component {
 
         return connectDropTarget (
             <div className="diagram">
-                <RJD.DiagramWidget diagramEngine={engine} onChange={this.onChangeHandler.bind(this)}/>
+                <RJD.DiagramWidget 
+                    diagramEngine={engine} 
+                    onChange={this.onChangeHandler.bind(this)}
+                    />
             </div>
         )
     }

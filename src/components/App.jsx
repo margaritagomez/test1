@@ -103,12 +103,13 @@ class App extends React.Component {
                 </div>
 
                 <div className="content middle center">
-                     <div className="diagram-panel">
-                         <Diagram
-                             selectedNode={this.state.selectedNode}
-                             model={this.state.model}
-                             updateModel={this.onUpdateModel.bind(this)}/>
-                     </div>
+                    <div className="diagram-panel">
+                        <Diagram
+                            selectedNode={this.state.selectedNode}
+                            model={this.state.model}
+                            updateModel={this.onUpdateModel.bind(this)}
+                            />
+                    </div>
                 </div>
 
             </div>
