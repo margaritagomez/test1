@@ -1,4 +1,4 @@
-# treble.ai D&D Test
+# D&D Test
 
 ## Features
 
