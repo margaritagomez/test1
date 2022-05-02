@@ -5,7 +5,7 @@ import { ImageNodeModel } from './ImageNodeModel';
 export class ImageNodeWidget extends React.Component {
   static defaultProps = {
     node: null,
-    color: 'rgb(224, 98, 20)'
+    color: 'transparent'
   };
 
   onRemove() {
@@ -38,27 +38,26 @@ export class ImageNodeWidget extends React.Component {
 
   render() {
     const { node, displayOnly, color: displayColor } = this.props;
-    const { name, color } = node;
-    const style = {};
-    if (color || displayColor) {
-      style.background = color || displayColor;
-    }
+    const { name, color, icon } = node;
 
     return (
-      <div className='basic-node' style={style}>
-        <div className='title'>
-          <div className='name'>
-            image
-          </div>
+      <div className='basic-node'>
+        <div className='node-header'>
           {!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
         </div>
-        <div className='ports'>
-          <div className='in'>
-            {this.getInPort()}
+
+        <div className='node-middle'>
+          <div className='in'>{!displayOnly ? this.getInPort() : null}</div>
+          
+          <div className='node-icon'>
+            <img className={'icon ' + name} src={icon}/>
           </div>
-          <div className='out'>
-            {this.getOutPort()}
-          </div>
+          
+          <div className='out'>{!displayOnly ? this.getOutPort() : null}</div>
+        </div>
+
+        <div className='node-footer'>
+          {name}
         </div>
       </div>
     );

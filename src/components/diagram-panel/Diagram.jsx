@@ -5,6 +5,10 @@ import _ from 'lodash';
 
 import { engine } from './engine';
 import { ImageNodeModel } from '../nodes/imagenode/ImageNodeModel';
+import { TextNodeModel } from '../nodes/textnode/TextNodeModel';
+import ec2Logo from '../../assets/node_icon_ec2.png'
+import rdsLogo from '../../assets/node_icon_rds.png'
+import elbLogo from '../../assets/node_icon_elb.png'
 
 
 // Setup the diagram model
@@ -19,24 +23,27 @@ const target = {
         const y = pageY - top - offsetY;
         const item = monitor.getItem();
 
-        let node;
+        let imageNodeTypes = {
+            'rds': {
+                name: 'RDS',
+                logo: rdsLogo
+            },
+            'ec2': {
+                name: 'EC2',
+                logo: ec2Logo
+            },
+            'elb': {
+                name: 'ELB',
+                logo: elbLogo
+            }
+        };
+        const nodeProps = imageNodeTypes[item.type];
 
-        if (item.type === 'imagenode') {
-            node = new ImageNodeModel('Image Node', 'rgb(124, 28, 120)', {
-                title: '',
-                body: '',
-                video: {
-                    url: ''
-                },
-                image: {
-                    src: '',
-                    alt: ''
-                },
-                info: {
-                    title: '',
-                    body: ''
-                }
-            });
+        let node;
+        if (nodeProps) {
+            node = new ImageNodeModel(nodeProps.name, '', {}, nodeProps.logo);
+        } else if (item.type === 'textnode') {
+            node = new TextNodeModel('Text', {});
         }
 
         node.x = x;

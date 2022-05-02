@@ -2,13 +2,14 @@ import _ from 'lodash';
 import * as RJD from '../../../../lib/main';
 
 export class ImageNodeModel extends RJD.NodeModel {
-  constructor(name = 'Untitled', color = 'rgb(224, 98, 20)', content) {
+  constructor(name = 'Untitled', color = 'rgb(224, 98, 20)', content, icon) {
     super('imagenode');
     this.addPort(new RJD.DefaultPortModel(false, 'output', 'Out'));
     this.addPort(new RJD.DefaultPortModel(true, 'input', 'In'));
     this.name = name;
     this.color = color;
     this.content = content;
+    this.icon = icon;
   }
 
   deSerialize(object) {
@@ -16,13 +17,15 @@ export class ImageNodeModel extends RJD.NodeModel {
     this.name = object.name;
     this.color = object.color;
     this.content = object.content;
+    this.icon = object.icon;
   }
 
   serialize() {
     return _.merge(super.serialize(), {
       name: this.name,
       color: this.color,
-      content: this.content
+      content: this.content,
+      icon: this.icon,
     });
   }
 
