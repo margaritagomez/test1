@@ -58,7 +58,7 @@
 
     &.selected {
       >* {
-        border-color:rgb(0,192,255) !important;
+        border-color:transparent!important;
         -webkit-filter: drop-shadow( 0 0 20px rgba(0,192,255,0.5));
       }
     }
@@ -85,23 +85,18 @@
   }
 
   .port {
-    width: 15px;
-    height: 15px;
-    background: rgba(white,0.1);
     &:hover,&.selected {
       background: rgb(192,255,0);
     }
   }
 
   .basic-node {
-    background-color: rgb(30,30,30);
+    background-color: transparent;
     border-radius: 5px;
     font-family:Arial;
     color: white;
-    border: solid 2px black;
     overflow: visible;
     font-size: 12px;
-    box-shadow: 0 0 10px rgba(black,0.5);
 
     .title {
       background: rgba(black,0.3);
